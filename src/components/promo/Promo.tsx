@@ -24,21 +24,6 @@ const Promo = () => {
 
     const banner = data?.data
 
-    const banner2 = [
-        {
-            banner_name: "Banner 1",
-            banner_image: "/assets/Banner 1.png"
-        },
-        {
-            banner_name: "Banner 2",
-            banner_image: "/assets/Banner 2.png"
-        },
-        {
-            banner_name: "Banner 3",
-            banner_image: "/assets/Banner 1.png"
-        }
-    ]
-
     return (
         <div id="promo" className="mt-6 mb-6 overflow-hidden">
 
