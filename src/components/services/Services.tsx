@@ -43,7 +43,7 @@ const Services = () => {
                         <div className='flex items-center justify-center transition-transform hover:scale-110'>
                             <img src={item.service_icon} alt={item.service_name} className="size-16" />
                         </div>
-                        <p className='text-[10px] md:text-sm font-normal whitespace-normal break-words w-full'>{item.service_name}</p>
+                        <p className='text-[10px] md:text-sm font-normal whitespace-normal w-full'>{item.service_name}</p>
                     </div>
                 ))}
             </div>

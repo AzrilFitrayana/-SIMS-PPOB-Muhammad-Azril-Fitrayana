@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "../store";
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 const Header = () => {
     const [currencyHidden, setCurrencyHidden] = useState(false)
@@ -30,9 +31,10 @@ const Header = () => {
                     style={{ backgroundImage: "url('/assets/Background Saldo.png')" }}>
                     <div className='absolute inset-0 flex flex-col text-white justify-center px-7 gap-4'>
                         <p className='text-lg font-medium'>Saldo</p>
-                        <p className='text-3xl font-bold'>{currencyHidden ? 'Rp.' + balance.toLocaleString('id-ID') : '*****'}</p>
-                        <button onClick={() => setCurrencyHidden(state => !state)} className='mt-2 pr-6 flex items-center gap-2 text-sm hover:opacity-80 transition-opacity w-fit'>
-                            <span>Lihat Saldo</span>
+                        <p className='text-3xl font-bold'>{currencyHidden ? 'Rp ' + balance.toLocaleString('id-ID') : 'Rp ● ● ● ● ● ●'}</p>
+                        <button onClick={() => setCurrencyHidden(state => !state)} className='mt-2 pr-6 flex items-center gap-2 text-sm hover:opacity-80 transition-opacity bg-red-500'>
+                            <span>{currencyHidden ? 'Tutup Saldo' : 'Lihat Saldo'}</span>
+                            {currencyHidden ? <EyeOff size={14} /> : <Eye size={14} />}
                         </button>
                     </div>
                 </div>

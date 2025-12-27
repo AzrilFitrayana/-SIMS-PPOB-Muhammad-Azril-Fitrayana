@@ -14,7 +14,7 @@ interface History {
 const HistoryPage = () => {
 
     const offset = 0
-    const [limit, setLimit] = useState(3)
+    const [limit, setLimit] = useState(5)
 
     const { data, isLoading, isFetching, isError } = useQuery({
         queryKey: ['history', offset, limit],
@@ -22,11 +22,9 @@ const HistoryPage = () => {
         placeholderData: (prev) => prev,
     })
 
-    const history = data?.data
+    const history = data?.data;
 
-
-
-    console.log(history)
+    const hasMore = history?.records.length === limit;
 
     return (
         <section id='history' className='w-[80%] flex flex-col gap-6 mx-auto mb-8'>
@@ -65,9 +63,17 @@ const HistoryPage = () => {
                 ))}
             </div>
 
-            <div className='flex justify-center mt-6'>
-                <button onClick={() => setLimit(limit => limit + 3)} className={`cursor-pointer text-xl text-red-500 font-semibold hover:text-red-400 ${history?.records.length !== limit ? 'hidden' : ''}`}>Show More</button>
-            </div>
+            {hasMore && (
+                <div className="flex justify-center mt-6">
+                    <button
+                        onClick={() => setLimit((prev) => prev + 5)}
+                        className="cursor-pointer text-xl text-red-500 font-semibold hover:text-red-400"
+                        disabled={isFetching}
+                    >
+                        Show More
+                    </button>
+                </div>
+            )}
 
             {isLoading && <Loading />}
             {isFetching && <Loading />}
